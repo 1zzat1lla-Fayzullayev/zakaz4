@@ -36,7 +36,7 @@ function GetStart() {
 					</motion.p>
 				</motion.div>
 				<motion.button
-					className='bg-[#38B1F5] rounded-[10px] w-[250px] h-[60px] text-white mt-[20px] md:mt-0'
+					className='bg-[#2BC6F6] rounded-[10px] w-[200px] md:w-[250px] h-[60px] text-white mt-[37px] transition ease-in hover:shadow-lg hover:shadow-[#2BC6F6]'
 					whileHover={{ scale: 1.05 }}
 					whileTap={{ scale: 0.95 }}
 					initial={{ opacity: 0, x: 50 }}
