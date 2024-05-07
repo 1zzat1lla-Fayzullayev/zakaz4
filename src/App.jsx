@@ -8,6 +8,7 @@ import PapperPrice from './components/PapperPrice'
 import Authors from './components/Authors'
 import GetStart from './components/GetStart'
 import Footer from './components/Footer'
+import { Toaster } from 'react-hot-toast'
 
 function App() {
 	return (
@@ -23,6 +24,7 @@ function App() {
 				<GetStart />
 				<Footer />
 			</div>
+			<Toaster position='top-center' reverseOrder={false} />
 		</>
 	)
 }
