@@ -2,12 +2,19 @@ import React, { useState } from 'react'
 import Images from '../assets/Images'
 import Hamburger from '../shared/ui/Hamburger'
 import { AnimatePresence, motion } from 'framer-motion'
+import Modal from '../shared/Modal'
 
 function Navbar() {
 	const [showNav, setShowNav] = useState(false)
+	const [openModal, setOpenModal] = useState(false)
 
 	const handleShowNav = () => {
 		setShowNav(!showNav)
+		document.body.classList.toggle('overflow-hidden')
+	}
+
+	const handleOpenModal = () => {
+		setOpenModal(!openModal)
 	}
 
 	return (
@@ -84,6 +91,7 @@ function Navbar() {
 				<motion.button
 					className='text-[#2BC6F6] border border-[#2BC6F6] w-[154px] h-[45px] rounded-[50px] hidden md:block transition ease-in hover:bg-[#2BC6F6] hover:text-white hover:shadow-lg hover:shadow-[#2BC6F6]'
 					whileHover={{ scale: 1.1 }}
+					onClick={handleOpenModal}
 				>
 					Get started
 				</motion.button>
@@ -91,6 +99,7 @@ function Navbar() {
 					<Hamburger handleShowNav={handleShowNav} />
 				</motion.div>
 			</motion.div>
+			<Modal isOpen={openModal} onClose={handleOpenModal} />
 		</>
 	)
 }

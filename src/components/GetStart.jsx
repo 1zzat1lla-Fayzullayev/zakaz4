@@ -1,8 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Wrapper from '../layout/Wrapper'
 import { motion } from 'framer-motion'
+import Modal from '../shared/Modal'
 
 function GetStart() {
+	const [openModal, setOpenModal] = useState(false)
+
+	const handleOpenModal = () => {
+		setOpenModal(!openModal)
+	}
 	return (
 		<Wrapper>
 			<motion.div
@@ -36,10 +42,12 @@ function GetStart() {
 					initial={{ opacity: 0, x: 50 }}
 					animate={{ opacity: 1, x: 0 }}
 					transition={{ duration: 0.5, delay: 0.6 }}
+					onClick={handleOpenModal}
 				>
 					Get started
 				</motion.button>
 			</motion.div>
+			<Modal isOpen={openModal} onClose={handleOpenModal} />
 		</Wrapper>
 	)
 }

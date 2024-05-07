@@ -1,9 +1,17 @@
-import React from 'react'
+// Hero.js
+import React, { useState } from 'react'
 import Images from '../assets/Images'
 import Wrapper from '../layout/Wrapper'
 import { motion } from 'framer-motion'
+import Modal from '../shared/Modal'
 
 function Hero() {
+	const [openModal, setOpenModal] = useState(false)
+
+	const handleOpenModal = () => {
+		setOpenModal(!openModal)
+	}
+
 	return (
 		<Wrapper>
 			<motion.div
@@ -31,7 +39,10 @@ function Hero() {
 						className='flex justify-center md:justify-start'
 						whileHover={{ scale: 1.05 }}
 					>
-						<button className='bg-[#2BC6F6] rounded-[10px] w-[200px] md:w-[250px] h-[60px] text-white mt-[37px] transition ease-in hover:shadow-lg hover:shadow-[#2BC6F6]'>
+						<button
+							className='bg-[#2BC6F6] rounded-[10px] w-[200px] md:w-[250px] h-[60px] text-white mt-[37px] transition ease-in hover:shadow-lg hover:shadow-[#2BC6F6]'
+							onClick={handleOpenModal}
+						>
 							Get started
 						</button>
 					</motion.div>
@@ -40,6 +51,7 @@ function Hero() {
 					<img src={Images.hero1} alt='hero image' />
 				</motion.div>
 			</motion.div>
+			<Modal isOpen={openModal} onClose={handleOpenModal} />
 		</Wrapper>
 	)
 }
