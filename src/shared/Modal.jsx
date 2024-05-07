@@ -49,7 +49,7 @@ function Modal({ isOpen, onClose }) {
 		<>
 			{isOpen && (
 				<motion.div
-					className='fixed top-0 left-0 w-full h-full flex justify-center items-center bg-gray-900 bg-opacity-50'
+					className='fixed z-[10000] top-0 left-0 w-full h-full flex justify-center items-center bg-gray-900 bg-opacity-50'
 					onClick={handleCloseModal}
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}

@@ -28,7 +28,7 @@ function Hero() {
 						English Essay Writing Help
 					</motion.h1>
 					<motion.p
-						className='text-[#4F5665] mt-[15px] text-center md:text-start'
+						className='text-[#4F5665] mt-[15px] text-center md:text-start mx-[20px] md:mx-0'
 						whileHover={{ scale: 1.05 }}
 					>
 						Language skills are not only about authentic speaking. Usually

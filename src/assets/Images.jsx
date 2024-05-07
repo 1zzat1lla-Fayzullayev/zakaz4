@@ -14,6 +14,8 @@ import author3 from '../assets/author3.png'
 import facebook from '../assets/Facebook.png'
 import instagram from '../assets/Instagram.png'
 import twitter from '../assets/Twitter.png'
+import hamburger from '../assets/hamburger.png'
+import close from '../assets/close.png'
 
 export default {
 	logo,
@@ -32,4 +34,6 @@ export default {
 	facebook,
 	instagram,
 	twitter,
+	hamburger,
+	close,
 }

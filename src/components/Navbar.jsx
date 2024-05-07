@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import Images from '../assets/Images'
-import Hamburger from '../shared/ui/Hamburger'
+// import Hamburger from '../shared/ui/Hamburger'
 import { AnimatePresence, motion } from 'framer-motion'
 import Modal from '../shared/Modal'
 
@@ -20,7 +20,7 @@ function Navbar() {
 	return (
 		<>
 			<motion.div
-				className='flex justify-around items-center font-Rubik my-[40px] mx-[20px] md:mx-0'
+				className='fixed top-0 z-[10] bg-white w-full flex md:justify-around items-center font-Rubik py-[20px] mx-[20px] md:mx-0'
 				initial={{ opacity: 0, y: -50 }}
 				animate={{ opacity: 1, y: 0 }}
 				exit={{ opacity: 0, y: -50 }}
@@ -37,56 +37,30 @@ function Navbar() {
 						whileHover={{ rotate: 360 }}
 					/>
 					<motion.h1
-						className='text-[#0B132A] font-bold text-[20px]'
+						className='text-[#0B132A] font-bold md:text-[20px]'
 						whileHover={{ scale: 1.1 }}
 					>
 						English Essay Writing Help
 					</motion.h1>
 				</motion.div>
 				<AnimatePresence>
-					{!showNav ? (
-						<ul className='hidden md:flex items-center gap-[30px] text-[#4F5665] mr-[200px]'>
-							<li>
-								<a href='#' className='transition ease-in hover:text-[#2BC6F6]'>
-									About
-								</a>
-							</li>
-							<li>
-								<a href='#' className='transition ease-in hover:text-[#2BC6F6]'>
-									Pricing
-								</a>
-							</li>
-							<li>
-								<a href='#' className='transition ease-in hover:text-[#2BC6F6]'>
-									Authors
-								</a>
-							</li>
-						</ul>
-					) : (
-						<motion.ul
-							className='flex flex-col justify-center items-center gap-[30px] text-[#4F5665] absolute top-0 left-0 right-0 bottom-0 m-auto bg-white'
-							initial={{ opacity: 0, y: -50 }}
-							animate={{ opacity: 1, y: 0 }}
-							exit={{ opacity: 0, y: -50 }}
-							transition={{ duration: 0.3 }}
-						>
-							<li>
-								<a href='#' className='transition ease-in hover:text-[#2BC6F6]'>
-									About
-								</a>
-							</li>
-							<li>
-								<a href='#' className='transition ease-in hover:text-[#2BC6F6]'>
-									Pricing
-								</a>
-							</li>
-							<li>
-								<a href='#' className='transition ease-in hover:text-[#2BC6F6]'>
-									Authors
-								</a>
-							</li>
-						</motion.ul>
-					)}
+					<ul className='hidden md:flex items-center gap-[30px] text-[#4F5665] mr-[200px]'>
+						<li>
+							<a href='#' className='transition ease-in hover:text-[#2BC6F6]'>
+								About
+							</a>
+						</li>
+						<li>
+							<a href='#' className='transition ease-in hover:text-[#2BC6F6]'>
+								Pricing
+							</a>
+						</li>
+						<li>
+							<a href='#' className='transition ease-in hover:text-[#2BC6F6]'>
+								Authors
+							</a>
+						</li>
+					</ul>
 				</AnimatePresence>
 				<motion.button
 					className='text-[#2BC6F6] border border-[#2BC6F6] w-[154px] h-[45px] rounded-[50px] hidden md:block transition ease-in hover:bg-[#2BC6F6] hover:text-white hover:shadow-lg hover:shadow-[#2BC6F6]'
@@ -95,11 +69,52 @@ function Navbar() {
 				>
 					Get started
 				</motion.button>
-				<motion.div className='flex md:hidden' whileHover={{ scale: 1.1 }}>
-					<Hamburger handleShowNav={handleShowNav} />
+				<motion.div
+					className='flex md:hidden z-[1000] fixed right-2'
+					whileHover={{ scale: 1.1 }}
+				>
+					<img
+						src={Images.hamburger}
+						alt='hamburger'
+						onClick={handleShowNav}
+						className='w-[40px]'
+					/>
 				</motion.div>
 			</motion.div>
 			<Modal isOpen={openModal} onClose={handleOpenModal} />
+
+			{/* Mobile nav */}
+			{showNav && (
+				<motion.ul
+					className='flex flex-col justify-center items-center gap-[30px] text-[#4F5665]  top-0 left-0 right-0 bottom-0 m-auto bg-white z-[90] fixed'
+					initial={{ opacity: 0, y: -50 }}
+					animate={{ opacity: 1, y: 0 }}
+					exit={{ opacity: 0, y: -50 }}
+					transition={{ duration: 0.3 }}
+				>
+					<img
+						src={Images.close}
+						alt='close'
+						onClick={handleShowNav}
+						className='w-[40px] fixed right-4 top-5'
+					/>
+					<li>
+						<a href='#' className='transition ease-in hover:text-[#2BC6F6]'>
+							About
+						</a>
+					</li>
+					<li>
+						<a href='#' className='transition ease-in hover:text-[#2BC6F6]'>
+							Pricing
+						</a>
+					</li>
+					<li>
+						<a href='#' className='transition ease-in hover:text-[#2BC6F6]'>
+							Authors
+						</a>
+					</li>
+				</motion.ul>
+			)}
 		</>
 	)
 }
